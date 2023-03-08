@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
           }, style:  OutlinedButton.styleFrom(
                             fixedSize: const Size(210, 50),
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(13.0)),
+                            borderRadius: BorderRadius.circular(13.0)),
                             side: const BorderSide(
                                 width: 2,
                                 color: Color.fromARGB(255, 152, 15, 5)),
