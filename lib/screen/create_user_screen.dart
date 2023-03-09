@@ -13,21 +13,21 @@ class _CreateUserScreenState extends State<CreateUserScreen> {
 
 
   late final TextEditingController _name;
-  late final TextEditingController _password;
+  late final TextEditingController _jobAppliedFor;
   late final String id;
   late final DateTime date;
 
   @override
   void initState() {
     _name = TextEditingController();
-    _password = TextEditingController();
+    _jobAppliedFor = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
     _name.dispose();
-    _password.dispose();
+    _jobAppliedFor.dispose();
     super.dispose();
   }
 
@@ -60,7 +60,7 @@ class _CreateUserScreenState extends State<CreateUserScreen> {
                 ),
               ),
               TextField(
-                controller: _password,
+                controller: _jobAppliedFor,
                 enableSuggestions: false,
                 autocorrect: false,
                 keyboardType: TextInputType.emailAddress,
@@ -71,7 +71,9 @@ class _CreateUserScreenState extends State<CreateUserScreen> {
               const SizedBox(height: 20,),
               TextButton(onPressed: () async{
               final name = _name.text;
-              final jobAppliedFor = _password.text;
+              final jobAppliedFor = _jobAppliedFor.text;
+              _name.clear();
+              _jobAppliedFor.clear();
               
               var res = await createUser(name, jobAppliedFor);
 
@@ -95,7 +97,8 @@ class _CreateUserScreenState extends State<CreateUserScreen> {
             ScaffoldMessenger.of(context).showSnackBar(snackBar);
               
               }, 
-              child: const Text("Register", style: TextStyle(color: Colors.black),))
+              child: const Text("Register", style: TextStyle(color: Colors.black),)
+              )
             ],
           ),
         ),
